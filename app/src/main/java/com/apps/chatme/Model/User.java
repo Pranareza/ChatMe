@@ -1,4 +1,4 @@
-package com.apps.chatme.model;
+package com.apps.chatme.Model;
 
 public class User {
 
