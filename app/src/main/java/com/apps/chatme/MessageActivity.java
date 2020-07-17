@@ -55,6 +55,8 @@ public class MessageActivity extends AppCompatActivity {
 
     Intent intent;
 
+    String userid;
+
     ValueEventListener seenListener;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -95,7 +97,7 @@ public class MessageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String msg = text_send.getText().toString();
                 if (!msg.equals("")){
-                    sendMessages(fuser.getUid(), userid, msg);
+                    sendMessage(fuser.getUid(), userid, msg);
                 } else {
                     Toast.makeText(MessageActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
                 }
@@ -125,6 +127,8 @@ public class MessageActivity extends AppCompatActivity {
 
             }
         });
+
+        seenMessage(userid);
     }
 
     private  void seenMessage(final String userid) {
@@ -147,33 +151,10 @@ public class MessageActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
-    private void sendMessage(final String userid) {
-        reference = FirebaseDatabase.getInstance().getReference("Chats");
-        seenListener = reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Chat chat = snapshot.getValue(Chat.class);
-                    if (chat.getReceiver().equals(fuser.getUid()) && chat.getSender().equals(userid)) {
-                        HashMap<String, Object> hashMap = new HashMap<>();
-                        hashMap.put("isseen", true);
-                        snapshot.getRef().updateChildren(hashMap);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        seenMessage(userid);
-    }
-
-    private void sendMessages(String sender, String receiver, String message) {
+    private void sendMessage(String sender, final String receiver, String message) {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
@@ -184,6 +165,24 @@ public class MessageActivity extends AppCompatActivity {
         hashMap.put("isseen", false);
 
         reference.child("Chats").push().setValue(hashMap);
+
+        final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("Chatlist")
+                .child(fuser.getUid())
+                .child(userid);
+        chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()) {
+                    chatRef.child("id").setValue(userid);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     private void readMessages(final String myid, final String userid, final String imageurl) {
