@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:background="@drawable/background">
 
     <include
         android:id="@+id/toolbar"
@@ -21,42 +22,52 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create a new account"
+            android:text="@string/create_a_new_account"
             android:textSize="20sp"
             android:textStyle="bold"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:drawablePadding="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/username"
             android:layout_marginTop="10dp"
             app:met_floatingLabel="normal"
-            android:hint="Username"/>
+            android:hint="@string/username"
+            android:drawableStart="@drawable/ic_person_black_24dp" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:drawableLeft="@drawable/ic_email_black_24dp"
+            android:drawablePadding="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/email"
             android:inputType="textEmailAddress"
             android:layout_marginTop="10dp"
             app:met_floatingLabel="normal"
-            android:hint="Email"/>
+            android:hint="@string/email"
+            android:drawableStart="@drawable/ic_email_black_24dp" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:drawableLeft="@drawable/ic_lock_black_24dp"
+            android:drawablePadding="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/password"
             android:inputType="textPassword"
             android:layout_marginTop="10dp"
             app:met_floatingLabel="normal"
-            android:hint="Password"/>
+            android:hint="@string/password"
+            android:drawableStart="@drawable/ic_lock_black_24dp" />
         
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register"
+            android:text="@string/register"
             android:id="@+id/btn_register"
-            android:background="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:background="@drawable/rectangle_button"
             android:layout_marginTop="10dp"
             android:textColor="@color/textColor"/>
 

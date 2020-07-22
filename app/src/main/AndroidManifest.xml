@@ -13,42 +13,49 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StartActivity">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".StartActivity"/>
         <activity
             android:name=".RegisterActivity"
             android:parentActivityName=".StartActivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".LoginActivity"
-            android:parentActivityName=".StartActivity"/>
+            android:parentActivityName=".StartActivity" />
         <activity android:name=".MessageActivity" />
         <activity
             android:name=".ResetPasswordActivity"
-            android:parentActivityName=".LoginActivity"/>
+            android:parentActivityName=".LoginActivity" />
 
-        <service android:name=".Notifications.MyFirebaseIdService"
+        <service
+            android:name=".Notifications.MyFirebaseIdService"
             android:enabled="true"
-            android:exported="true">
+            android:exported="true"
+            android:permission="@string/todo">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name=".Notifications.MyFirebaseMessaging"
+        <service
+            android:name=".Notifications.MyFirebaseMessaging"
             android:enabled="true"
-            android:exported="true">
+            android:exported="true"
+            android:permission="@string/todo">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -13,7 +13,7 @@ public class User {
         this.username = username;
         this.imageURL = imageURL;
         this.status = status;
-        this.status = search;
+        this.search = search;
     }
 
     public String getId() {

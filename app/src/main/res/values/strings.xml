@@ -3,4 +3,27 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello">hello</string>
+    <string name="dilihat">Dilihat</string>
+    <string name="no_message">No Message</string>
+    <string name="todo">TODO</string>
+    <string name="chatme_apps">ChatMe</string>
+    <string name="by_prana_reza_alviana">Design by Prana Reza Alviana</string>
+    <string name="username">username</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_your_password">Forgot your password ?</string>
+    <string name="type_a_message">Type a message…</string>
+    <string name="create_a_new_account">Create a new account</string>
+    <string name="register">Register</string>
+    <string name="your_email">Your Email</string>
+    <string name="reset">Reset</string>
+    <string name="verify_reset">Dengan menekan RESET,anda akan menerima email untuk me-RESET password anda</string>
+    <string name="chatme_app">ChatMe</string>
+    <string name="profile">Profile</string>
+    <string name="add_photo">add photo</string>
+    <string name="tap_profile_for_change">Tap profile for change</string>
+    <string name="copyright">Copyright</string>
+    <string name="search">Search…</string>
 </resources>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@drawable/background">
 
     <include
         android:id="@+id/toolbar"
@@ -21,43 +22,49 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
+            android:text="@string/login"
             android:textSize="20sp"
             android:textStyle="bold"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:drawableLeft="@drawable/ic_email_black_24dp"
+            android:drawablePadding="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/email"
             android:inputType="textEmailAddress"
             android:layout_marginTop="10dp"
             app:met_floatingLabel="normal"
-            android:hint="Email"/>
+            android:hint="@string/email"
+            android:drawableStart="@drawable/ic_email_black_24dp" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:drawableLeft="@drawable/ic_lock_black_24dp"
+            android:drawablePadding="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/password"
             android:inputType="textPassword"
             android:layout_marginTop="10dp"
             app:met_floatingLabel="normal"
-            android:hint="Password"/>
+            android:hint="@string/password"
+            android:drawableStart="@drawable/ic_lock_black_24dp" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login"
+            android:text="@string/login"
             android:id="@+id/btn_login"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/rectangle_button"
             android:layout_marginTop="10dp"
             android:textColor="@color/textColor"/>
-        
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/forgot_password"
             android:gravity="center"
-            android:text="Forgot your password ?"
+            android:text="@string/forgot_your_password"
             android:layout_marginTop="10dp"
             android:layout_gravity="end"
             android:textStyle="bold"

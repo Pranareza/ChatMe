@@ -1,38 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/latar"
     android:layout_height="match_parent"
     tools:context=".StartActivity">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView"
+        android:layout_width="120dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:src="@drawable/chatlogo" />
+
     <TextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ChatMe App"
-        android:textColor="@color/textColor"
-        android:textSize="25sp"
-        android:textStyle="bold"/>
-    
+        android:layout_height="30dp"
+        android:layout_below="@id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textSize="22sp"
+        android:ems="9"
+        android:text="@string/chatme_app"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="100dp"
+        android:layout_below="@id/text"
         android:id="@+id/login"
-        android:background="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:background="@drawable/rectangle_button"
         android:textColor="@color/textColor"
-        android:text="login"/>
+        android:text="@string/login"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/register"
+        android:layout_below="@id/login"
+        android:textStyle="bold"
         android:layout_marginTop="10dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/rectangle_button"
         android:textColor="@color/textColor"
-        android:text="register"/>
+        android:text="@string/register"/>
 
-</LinearLayout>
+</RelativeLayout>

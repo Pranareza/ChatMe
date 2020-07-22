@@ -9,10 +9,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.IntegerRes;
 import androidx.core.app.NotificationCompat;
-import androidx.viewpager.widget.PagerAdapter;
 
 import com.apps.chatme.MessageActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +26,7 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        assert sented != null;
         if (firebaseUser != null && sented.equals(firebaseUser.getUid())) {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -47,6 +45,7 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
         String body = remoteMessage.getData().get("body");
 
         RemoteMessage.Notification notification = remoteMessage.getNotification();
+        assert user != null;
         int j = Integer.parseInt(user.replaceAll("[\\D]", ""));
         Intent intent = new Intent(this, MessageActivity.class);
         Bundle bundle = new Bundle();
@@ -54,6 +53,7 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
         intent.putExtras(bundle);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, j, intent, PendingIntent.FLAG_ONE_SHOT);
+
         Uri defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         OreoNotification oreoNotification = new OreoNotification(this);
@@ -75,6 +75,7 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
         String body = remoteMessage.getData().get("body");
 
         RemoteMessage.Notification notification = remoteMessage.getNotification();
+        assert user != null;
         int j = Integer.parseInt(user.replaceAll("[\\D]", ""));
         Intent intent = new Intent(this, MessageActivity.class);
         Bundle bundle = new Bundle();
@@ -84,6 +85,7 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, j, intent, PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        assert icon != null;
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(Integer.parseInt(icon))
                 .setContentTitle(title)
@@ -98,6 +100,7 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
             i = j;
         }
 
+        assert noti != null;
         noti.notify(i, builder.build());
 
     }

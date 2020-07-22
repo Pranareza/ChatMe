@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/background_right"
-            android:text="hello"
+            android:text="@string/hello"
             android:layout_alignParentEnd="true"
             android:id="@+id/show_message"
             android:textSize="18sp"
@@ -33,11 +33,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txt_seen"
-            android:text="Dilihat"
+            android:text="@string/dilihat"
             android:layout_below="@id/show_message"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"/>
-
 
     </RelativeLayout>
 

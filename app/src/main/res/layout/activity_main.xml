@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/latar_main">
     
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -30,7 +31,7 @@
                 android:id="@+id/username"
                 android:layout_marginLeft="25dp"
                 android:layout_marginStart="25dp"
-                android:text="Username"
+                android:text="@string/username"
                 android:textColor="@color/textColor"
                 android:textStyle="bold"
                 />

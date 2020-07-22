@@ -37,8 +37,8 @@ public class ChatsFragment extends Fragment {
     private UserAdapter userAdapter;
     private List<User> mUsers;
 
-    FirebaseUser fuser;
-    DatabaseReference reference;
+    private FirebaseUser fuser;
+    private DatabaseReference reference;
 
     private List<Chatlist> usersList;
 
@@ -95,6 +95,7 @@ public class ChatsFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     User user = snapshot.getValue(User.class);
                     for (Chatlist chatlist : usersList) {
+                        assert user != null;
                         if (user.getId().equals(chatlist.getId())) {
                             mUsers.add(user);
                         }

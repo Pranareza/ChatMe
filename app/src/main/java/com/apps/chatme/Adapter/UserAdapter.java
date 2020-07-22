@@ -47,7 +47,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.user_item, parent, false);
-        return new UserAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -96,7 +96,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         return mUsers.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView username;
         public ImageView profile_image;
@@ -104,7 +104,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         private  ImageView img_off;
         private TextView last_msg;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             username = itemView.findViewById(R.id.username);
@@ -125,21 +125,23 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Chat chat = snapshot.getValue(Chat.class);
+                    assert chat != null;
+                    assert firebaseUser != null;
                     if (chat.getReceiver().equals(firebaseUser.getUid()) && chat.getSender().equals(userid) ||
                             chat.getReceiver().equals(userid) && chat.getSender().equals(firebaseUser.getUid())) {
                         theLastMessage = chat.getMessage();
                     }
                 }
 
-                switch (theLastMessage) {
-                    case "default":
-                        last_msg.setText("No Message");
-                        break;
+               switch (theLastMessage) {
+                   case "default":
+                       last_msg.setText("No Message");
+                       break;
 
-                    default:
-                        last_msg.setText(theLastMessage);
-                        break;
-                }
+                   default:
+                       last_msg.setText(theLastMessage);
+                       break;
+               }
 
                 theLastMessage = "default";
             }
